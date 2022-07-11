@@ -33,6 +33,17 @@ const computeSquareRoot = (n, p) => {
     if (p === 0) return 0;
     else return 
 }
+const intSqRootRecursive = (x) => {
+    //square roots of 0 and 1 are trivial and x /2 for
+    //the y0 parameter will cause a divide-by-zero exception
+    if (x == 0 || x == 1) {
+        return x;
+    }
+    //starting with x /2 avoids overflow issues
+    return intSqRootRecursive ( x - 2);
+}
+console.log(intSqRootRecursive(4))
+
 
 // Nombre premier
 const isPrimeNumber = (n, i = 2) => {
@@ -47,4 +58,8 @@ const isPrimeNumber = (n, i = 2) => {
     // Check for next divisor
     return isPrimeNumber(n, i + 1);
 }
-console.log(isPrimeNumber(103))
+
+// Trouver un nombre premier
+const findSupPrime = (n) => {
+    return (isPrimeNumber(n)) ? n : findSupPrime(n + 1)
+}
